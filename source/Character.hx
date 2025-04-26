@@ -14,6 +14,8 @@ class Character extends FlxSprite
 
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = 'bf';
+	
+	public var altAnim:String = '';
 
 	public var holdTimer:Float = 0;
 
@@ -649,6 +651,104 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+			case 'gf-kinky':
+				tex = Paths.getSparrowAtlas('updike/gf_but_spicy');
+				frames = tex;
+				animation.addByIndices('singUP', 'GF Dancing Beat', [0], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24,
+					false);
+				animation.addByIndices('danceLeft-edgy', 'GF Dancing Beat edgy', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight-edgy', 'GF Dancing Beat edgy', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24,
+					false);
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+
+				addOffset('danceLeft', 0);
+				addOffset('danceRight', 0);
+
+				playAnim('danceRight');
+			case 'bf-updike':
+				var tex = Paths.getSparrowAtlas('updike/bf_assets');
+				frames = tex;
+				animation.addByPrefix('idle', 'BF idle dance0', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS0', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS0', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS0', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS0', 24, false);
+				
+				animation.addByPrefix('idle-edgy', 'BF idle dance edgy', 24, false);
+				animation.addByPrefix('singUP-edgy', 'BF NOTE UP edgy0', 24, false);
+				animation.addByPrefix('singLEFT-edgy', 'BF NOTE LEFT edgy0', 24, false);
+				animation.addByPrefix('singRIGHT-edgy', 'BF NOTE RIGHT edgy0', 24, false);
+				animation.addByPrefix('singDOWN-edgy', 'BF NOTE DOWN edgy0', 24, false);
+				animation.addByPrefix('singUPmiss-edgy', 'BF NOTE UP MISS edgy', 24, false);
+				animation.addByPrefix('singLEFTmiss-edgy', 'BF NOTE LEFT MISS edgy', 24, false);
+				animation.addByPrefix('singRIGHTmiss-edgy', 'BF NOTE RIGHT MISS edgy', 24, false);
+				animation.addByPrefix('singDOWNmiss-edgy', 'BF NOTE DOWN MISS edgy', 24, false);
+
+				addOffset('idle', -5);
+				addOffset("singUP", -29, 27);
+				addOffset("singRIGHT", -38, -7);
+				addOffset("singLEFT", 12, -6);
+				addOffset("singDOWN", -10, -50);
+				addOffset("singUPmiss", -29, 27);
+				addOffset("singRIGHTmiss", -30, 21);
+				addOffset("singLEFTmiss", 12, 24);
+				addOffset("singDOWNmiss", -11, -19);
+				addOffset('idle-edgy', -5);
+				addOffset("singUP-edgy", -29, 27);
+				addOffset("singRIGHT-edgy", -38, -7);
+				addOffset("singLEFT-edgy", 12, -6);
+				addOffset("singDOWN-edgy", -10, -50);
+				addOffset("singUPmiss-edgy", -29, 27);
+				addOffset("singRIGHTmiss-edgy", -30, 21);
+				addOffset("singLEFTmiss-edgy", 12, 24);
+				addOffset("singDOWNmiss-edgy", -11, -19);
+				
+				playAnim('idle');
+
+				flipX = true;
+			case "updike" :
+				frames = Paths.getSparrowAtlas('updike/updike_assets');
+				animation.addByPrefix('idle', 'updingdong idle0', 24, false);
+				animation.addByPrefix('singUP', 'updingdong up note0', 24, false);
+				animation.addByPrefix('singDOWN', 'updingdong down note0', 24, false);
+				animation.addByPrefix('singLEFT', 'updingdong left note0', 24, false);
+				animation.addByPrefix('singRIGHT', 'updingdong right note0', 24, false);
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+				
+				animation.addByPrefix('idle-edgy', 'updingdong idle edgy', 24, false);
+				animation.addByPrefix('singUP-edgy', 'updingdong up note edgy', 24, false);
+				animation.addByPrefix('singDOWN-edgy', 'updingdong down note edgy', 24, false);
+				animation.addByPrefix('singLEFT-edgy', 'updingdong left note edgy', 24, false);
+				animation.addByPrefix('singRIGHT-edgy', 'updingdong right note edgy', 24, false);
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+				/*
+				animation.addByPrefix('idle-alt', character + ' alt idle', 24, false);
+				animation.addByPrefix('singUP-alt', character + ' alt up', 24, false);
+				animation.addByPrefix('singDOWN-alt', character + ' alt down', 24, false);
+				animation.addByPrefix('singLEFT-alt', character + ' alt left', 24, false);
+				animation.addByPrefix('singRIGHT-alt', character + ' alt right', 24, false);
+				addOffset('idle-alt');
+				addOffset("singUP-alt");
+				addOffset("singRIGHT-alt");
+				addOffset("singLEFT-alt");
+				addOffset("singDOWN-alt");
+				*/
+
+				playAnim('idle');
 		}
 
 
@@ -762,6 +862,16 @@ class Character extends FlxSprite
 						else
 							playAnim('danceLeft');
 					}
+				case 'gf-kinky':
+					if (!animation.curAnim.name.startsWith('hair'))
+					{
+						danced = !danced;
+
+						if (danced)
+							playAnim('danceRight'+altAnim);
+						else
+							playAnim('danceLeft'+altAnim);
+					}
 					case 'gf-whitty':
 						if (!animation.curAnim.name.startsWith('hair'))
 						{
@@ -800,7 +910,7 @@ class Character extends FlxSprite
 					else
 						playAnim('danceLeft');
 				default:
-					playAnim('idle');
+					playAnim('idle'+altAnim);
 			}
 		}
 	}
