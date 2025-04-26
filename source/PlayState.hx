@@ -212,6 +212,9 @@ class PlayState extends MusicBeatState
 
 	private var executeModchart = false;
 
+	var headlight:FlxSprite;
+	var fac_bg:FlxSprite;
+	
 	// API stuff
 	
 	public function addObject(object:FlxBasic) { add(object); }
@@ -670,6 +673,20 @@ class PlayState extends MusicBeatState
 								add(waveSpriteFG);
 						*/
 			}
+	case 'facility':
+				{
+						defaultCamZoom = 0.9;
+						curStage = 'facility';
+						
+						fac_bg = new FlxSprite( -104.35, -108.25).loadGraphic(Paths.image("updike/wallbg"),true,2781,1631);
+						fac_bg.animation.add("shitfart", [0, 1], 0);
+						fac_bg.animation.play("shitfart");
+						headlight = new FlxSprite( 891.2, 166.75).loadGraphic(Paths.image("updike/light"));
+						headlight.blend = "add";
+						
+						add(fac_bg);
+						add(headlight);
+				}
       case 'alley' | 'ballisticAlley':
         {
           	defaultCamZoom = 0.9;
@@ -679,8 +696,7 @@ class PlayState extends MusicBeatState
             if (SONG.stage == 'ballisticAlley')
             {
               trace('pogging');
-			  wBg.antialiasing = true;
-			  var bgTex = Paths.getSparrowAtlas('BallisticBackground', 'bonusWeek');
+              var bgTex = Paths.getSparrowAtlas('BallisticBackground', 'bonusWeek');
               nwBg = new FlxSprite(-600, -200);
               nwBg.frames = bgTex;
               nwBg.antialiasing = true;
@@ -720,6 +736,7 @@ class PlayState extends MusicBeatState
             // bg.updateHitbox();   
         
         }
+		
 			default:
 			{
 					defaultCamZoom = 0.9;
@@ -762,6 +779,8 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-christmas';
 			case 'gf-pixel':
 				gfVersion = 'gf-pixel';
+			case 'gf-kinky':
+				gfVersion = 'gf-kinky';
 			case 'whitty':
 				gfVersion = 'gf-whitty';
 			case 'gf':
@@ -851,6 +870,14 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+				
+			case 'facility':
+				boyfriend.setPosition(1432.75, 679.65);
+				gf.setPosition(974.65, 557.25);
+				gf.scrollFactor.set(1, 1);
+				dad.setPosition(410.45, 350.4);
+				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+				
 			case 'schoolEvil':
 				if(FlxG.save.data.distractions){
 				// trailArea.scrollFactor.set();
@@ -1643,7 +1670,7 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 			gf.dance();
-			boyfriend.playAnim('idle');
+			boyfriend.playAnim('idle'+boyfriend.altAnim);
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 			introAssets.set('default', ['ready', "set", "go"]);
@@ -2292,7 +2319,9 @@ class PlayState extends MusicBeatState
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
-
+		
+		headlight.visible = FlxG.random.int(0, 20) != 2;
+		
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
@@ -2736,16 +2765,21 @@ class PlayState extends MusicBeatState
 								altAnim = '-alt';
 						}
 	
+						
 						switch (Math.abs(daNote.noteData))
 						{
 							case 2:
-								dad.playAnim('singUP' + altAnim, true);
+								//dad.playAnim('singUP' + altAnim, true); //get ridda this shit
+								dad.playAnim('singUP' + dad.altAnim, true);//this good stuffs
 							case 3:
-								dad.playAnim('singRIGHT' + altAnim, true);
+								//dad.playAnim('singRIGHT' + altAnim, true); //get ridda this shit
+								dad.playAnim('singRIGHT' + dad.altAnim, true);//this good stuffs
 							case 1:
-								dad.playAnim('singDOWN' + altAnim, true);
+								//dad.playAnim('singDOWN' + altAnim, true); //get ridda this shit
+								dad.playAnim('singDOWN' + dad.altAnim, true);//this good stuffs
 							case 0:
-								dad.playAnim('singLEFT' + altAnim, true);
+								//dad.playAnim('singLEFT' + altAnim, true); //get ridda this shit
+								dad.playAnim('singLEFT' + dad.altAnim, true);// this good stuffs
 						}
 	
 						#if windows
@@ -3368,7 +3402,7 @@ class PlayState extends MusicBeatState
 				if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && !holdArray.contains(true))
 				{
 					if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
-						boyfriend.playAnim('idle');
+						boyfriend.playAnim('idle'+boyfriend.altAnim);
 				}
 		 
 				playerStrums.forEach(function(spr:FlxSprite)
@@ -3417,13 +3451,13 @@ class PlayState extends MusicBeatState
 			switch (direction)
 			{
 				case 0:
-					boyfriend.playAnim('singLEFTmiss', true);
+					boyfriend.playAnim('singLEFTmiss'+boyfriend.altAnim, true);
 				case 1:
-					boyfriend.playAnim('singDOWNmiss', true);
+					boyfriend.playAnim('singDOWNmiss'+boyfriend.altAnim, true);
 				case 2:
-					boyfriend.playAnim('singUPmiss', true);
+					boyfriend.playAnim('singUPmiss'+boyfriend.altAnim, true);
 				case 3:
-					boyfriend.playAnim('singRIGHTmiss', true);
+					boyfriend.playAnim('singRIGHTmiss'+boyfriend.altAnim, true);
 			}
 
 			#if windows
@@ -3568,13 +3602,13 @@ class PlayState extends MusicBeatState
 					switch (note.noteData)
 					{
 						case 2:
-							boyfriend.playAnim('singUP', true);
+							boyfriend.playAnim('singUP'+boyfriend.altAnim, true);
 						case 3:
-							boyfriend.playAnim('singRIGHT', true);
+							boyfriend.playAnim('singRIGHT'+boyfriend.altAnim, true);
 						case 1:
-							boyfriend.playAnim('singDOWN', true);
+							boyfriend.playAnim('singDOWN'+boyfriend.altAnim, true);
 						case 0:
-							boyfriend.playAnim('singLEFT', true);
+							boyfriend.playAnim('singLEFT'+boyfriend.altAnim, true);
 					}
 		
 					#if windows
@@ -3802,7 +3836,22 @@ class PlayState extends MusicBeatState
 				FlxG.camera.zoom += 0.020;
 				camHUD.zoom += 0.035;
 			}
-
+		
+		if (SONG.song.toLowerCase() == "remorse"){
+			if (curBeat >= 224 && curBeat < 256){
+				dad.altAnim = '-edgy';
+				boyfriend.altAnim = '-edgy';
+				gf.altAnim = '-edgy';
+				headlight.alpha = 0;
+				fac_bg.animation.play("shitfart", true, false, 1);
+			}else{
+				dad.altAnim = '';
+				boyfriend.altAnim = '';
+				gf.altAnim = '';
+				headlight.alpha = 1;
+				fac_bg.animation.play("shitfart", true, false, 0);
+			}
+		}
 
 		iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 		iconP2.setGraphicSize(Std.int(iconP2.width + 30));
@@ -3817,7 +3866,7 @@ class PlayState extends MusicBeatState
 		
 		if (!boyfriend.animation.curAnim.name.startsWith("sing"))
 		{
-			boyfriend.playAnim('idle');
+			boyfriend.playAnim('idle'+boyfriend.altAnim);
 		}
 		
 		if (!dad.animation.curAnim.name.startsWith("sing"))
