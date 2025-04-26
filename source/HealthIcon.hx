@@ -13,6 +13,7 @@ class HealthIcon extends FlxSprite
 	{
 		super();
 		
+		if(char != "updike"){
 		loadGraphic(Paths.image('iconGrid','shared'), true, 150, 150);
 
 		antialiasing = true;
@@ -42,6 +43,13 @@ class HealthIcon extends FlxSprite
 		animation.add('whittyBSideCrazy', [32, 33], 0, false, isPlayer);
 		animation.add('whittyCrazy', [28, 29], 0, false, isPlayer);
 		animation.add('wide', [26, 27], 0, false, isPlayer);
+		animation.add('gf-kinky', [16], 0, false, isPlayer);
+		animation.add('bf-updike', [0,1], 0, false, isPlayer);
+		}else{
+			loadGraphic('assets/images/updike_icons.png', true, 172, 120);
+			antialiasing = true;
+			animation.add('updike', [0,1], 0, false, isPlayer);
+		}
 		animation.play(char);
 
 		switch(char)
