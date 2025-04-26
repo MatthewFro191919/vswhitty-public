@@ -22,8 +22,9 @@ using StringTools;
 class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
+	public static var password:String = "REMORSE";
 
-	var weekData:Array<Dynamic> = [
+	public static var weekData:Array<Dynamic> = [
 		['Tutorial'],
 		['Bopeebo', 'Fresh', 'Dadbattle'],
 		['Spookeez', 'South', "Monster"],
@@ -32,11 +33,13 @@ class StoryMenuState extends MusicBeatState
 		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
 		['Senpai', 'Roses', 'Thorns'],
 		['Lo-Fight','Overhead', 'Ballistic'],
+		['shh'],
+		['']
 
 	];
 	var curDifficulty:Int = 1;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true, true, true, false];
 
 	var weekCharacters:Array<Dynamic> = [
 		['', 'bf', 'gf'],
@@ -47,6 +50,8 @@ class StoryMenuState extends MusicBeatState
 		['parents-christmas', 'bf', 'gf'],
 		['senpai', 'bf', 'gf'],
 		['whitty', 'bf', 'gf'],
+		['', 'bf', 'gf'],
+		['', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
@@ -58,6 +63,8 @@ class StoryMenuState extends MusicBeatState
 		"RED SNOW",
 		"hating simulator ft. moawling",
 		"Back Alley Blitz",
+		"screw off ; )",
+		"???",
 	];
 
 	var txtWeekTitle:FlxText;
@@ -75,6 +82,9 @@ class StoryMenuState extends MusicBeatState
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	
+	public static var dateWeek:UInt = 8;
+	public static var updWeek:UInt = 9;
 
 	override function create()
 	{
@@ -170,6 +180,8 @@ class StoryMenuState extends MusicBeatState
 						grpLocks.add(lock);
 						weekUnlocked.push(false);
 				}
+				
+			
 			
 			/*if (!weekUnlocked[i] && i != 7)
 			{
@@ -282,16 +294,30 @@ class StoryMenuState extends MusicBeatState
 					leftArrow.animation.play('press');
 				else
 					leftArrow.animation.play('idle');
-
-				if (controls.RIGHT_P)
-					changeDifficulty(1);
-				if (controls.LEFT_P)
-					changeDifficulty(-1);
+				if(curWeek != updWeek){
+					if (controls.RIGHT_P )
+						changeDifficulty(1);
+					if (controls.LEFT_P)
+						changeDifficulty( -1);
+				}else{
+					while (curDifficulty < 2){
+						changeDifficulty(1);
+					}
+				}
 			}
 
+			persistentUpdate = true;
+			persistentDraw = true;
 			if (controls.ACCEPT)
 			{
-				selectWeek();
+				if (curWeek == updWeek && !weekUnlocked[updWeek]){
+					persistentUpdate = false;
+					persistentDraw = true;
+					openSubState(new Prompt());
+				}else{
+					if(curWeek == updWeek)changeDifficulty( -1);
+					selectWeek();
+				}
 			}
 		}
 
@@ -335,7 +361,7 @@ class StoryMenuState extends MusicBeatState
 				case 2:
 					diffic = '-hard';
 			}
-
+			
 			PlayState.storyDifficulty = curDifficulty;
 
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
