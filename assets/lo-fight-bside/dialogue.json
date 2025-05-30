@@ -1,0 +1,74 @@
+{
+	"dialogue": [
+		{
+			"expression": "talk",
+			"text": "...Hello?",
+			"boxState": "normal",
+			"speed": 0.085,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "skdoop bep",
+			"boxState": "normal",
+			"speed": 0.035,
+			"portrait": "bf"
+		},
+		{
+			"expression": "talk",
+			"text": "...Oh, it's you two.",
+			"boxState": "normal",
+			"speed": 0.04,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "...Something about you seems familiar,\\nactually.",
+			"boxState": "normal",
+			"portrait": "WhiteOG",
+			"speed": 0.07
+		},
+		{
+			"expression": "talk",
+			"text": "Whatever. Could you both leave, though?\\nKind of busy not having anyone know where I am.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "beep bop",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "bf"
+		},
+		{
+			"expression": "talk",
+			"text": "...Listen, I'm not sure what you want from me, but I don't really have anything to my name right now.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "If you can just leave me alone, nothing bad has to happen.",
+			"boxState": "normal",
+			"portrait": "whiteog",
+			"speed": 0.04
+		},
+		{
+			"expression": "talk",
+			"text": "bip bop skdep beep",
+			"boxState": "normal",
+			"speed": 0.065,
+			"portrait": "bf"
+		},
+		{
+			"expression": "talk",
+			"text": "...",
+			"boxState": "normal",
+			"speed": 0.215,
+			"portrait": "WhiteOG"
+		}
+	]
+}

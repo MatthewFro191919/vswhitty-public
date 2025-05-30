@@ -1,0 +1,60 @@
+{
+	"dialogue": [
+		{
+			"expression": "talk",
+			"text": "I see how it is.",
+			"boxState": "normal",
+			"speed": 0.045,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "skbop",
+			"boxState": "normal",
+			"speed": 0.035,
+			"portrait": "bf"
+		},
+		{
+			"expression": "talk",
+			"text": "You're pushing my buttons here, dude.",
+			"boxState": "normal",
+			"speed": 0.06,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "bip bep skoo dip skbop",
+			"boxState": "normal",
+			"speed": 0.035,
+			"portrait": "bf"
+		},
+		{
+			"expression": "talk",
+			"text": "Look, all you have to do is go back to your little stage and act like this never happened. I don't think it's that hard.",
+			"boxState": "normal",
+			"speed": 0.05,
+			"portrait": "WhiteOG"
+		},
+		{
+			"expression": "talk",
+			"text": "boop skibop",
+			"boxState": "normal",
+			"speed": 0.03,
+			"portrait": "bf"
+		},
+		{
+			"expression": "talk",
+			"text": "...Don't make me do this... again?",
+			"boxState": "normal",
+			"speed": 0.07,
+			"portrait": "WhiteOG"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "WhiteOG",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "God, my head hurts."
+		}
+	]
+}
