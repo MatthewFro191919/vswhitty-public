@@ -42,7 +42,7 @@
       "name": "hxCodec",
       "type": "git",
       "ref": "main",
-      "url": "https://github.com/MobilePorting/hxCodec-0.6.3"
+      "url": "https://github.com/Luansilv16/hxCodec-0.6.3-vlc"
     },
     {
       "name": "hxcpp",
@@ -53,7 +53,7 @@
       "name": "lime",
       "type": "git",
       "ref": "main",
-      "url": "https://github.com/mcagabe19-stuff/lime-8.2.1"
+      "url": "https://github.com/sysource-x/lime-8.1.2"
     },
     {
       "name": "openfl",
