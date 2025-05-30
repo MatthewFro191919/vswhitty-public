@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gf_whitty_bside.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="Idle Left0000" x="1445" y="435" width="355" height="427" frameX="2" frameY="2" frameWidth="351" frameHeight="423"/>
+	<SubTexture name="Idle Left0001" x="0" y="874" width="358" height="434" frameX="2" frameY="2" frameWidth="354" frameHeight="430"/>
+	<SubTexture name="Idle Left0002" x="1086" y="435" width="359" height="435" frameX="2" frameY="2" frameWidth="355" frameHeight="431"/>
+	<SubTexture name="Idle Left0003" x="1086" y="0" width="359" height="435" frameX="2" frameY="2" frameWidth="355" frameHeight="431"/>
+	<SubTexture name="Idle Right0000" x="358" y="874" width="365" height="425" frameX="2" frameY="2" frameWidth="361" frameHeight="421"/>
+	<SubTexture name="Idle Right0001" x="362" y="0" width="364" height="433" frameX="2" frameY="2" frameWidth="360" frameHeight="429"/>
+	<SubTexture name="Idle Right0002" x="717" y="437" width="359" height="435" frameX="2" frameY="2" frameWidth="355" frameHeight="431"/>
+	<SubTexture name="Idle Right0003" x="358" y="437" width="359" height="435" frameX="2" frameY="2" frameWidth="355" frameHeight="431"/>
+	<SubTexture name="Sad0000" x="330" y="1308" width="330" height="430" frameX="2" frameY="2" frameWidth="326" frameHeight="426"/>
+	<SubTexture name="Sad0001" x="0" y="1308" width="330" height="430" frameX="2" frameY="2" frameWidth="326" frameHeight="426"/>
+	<SubTexture name="Sad0002" x="1445" y="862" width="330" height="430" frameX="2" frameY="2" frameWidth="326" frameHeight="426"/>
+	<SubTexture name="Scared0000" x="1445" y="0" width="357" height="435" frameX="2" frameY="2" frameWidth="353" frameHeight="431"/>
+	<SubTexture name="Scared0001" x="0" y="0" width="362" height="437" frameX="2" frameY="2" frameWidth="358" frameHeight="433"/>
+	<SubTexture name="Scared0002" x="0" y="437" width="358" height="437" frameX="2" frameY="2" frameWidth="354" frameHeight="433"/>
+	<SubTexture name="Scared0003" x="726" y="0" width="360" height="435" frameX="2" frameY="2" frameWidth="356" frameHeight="431"/>
+	<SubTexture name="Idle Left0004" x="1086" y="435" width="359" height="435" frameX="2" frameY="2" frameWidth="355" frameHeight="431"/>
+</TextureAtlas>
