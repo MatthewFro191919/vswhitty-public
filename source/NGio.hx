@@ -9,7 +9,6 @@ import io.newgrounds.objects.Medal;
 import io.newgrounds.objects.Score;
 import io.newgrounds.objects.ScoreBoard;
 import io.newgrounds.objects.events.Response;
-import io.newgrounds.objects.events.Result.GetCurrentVersionResult;
 import lime.app.Application;
 import openfl.display.Stage;
 
@@ -41,7 +40,7 @@ class NGio
 
 		new FlxTimer().start(2, function(tmr:FlxTimer)
 		{
-			var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addStatusHandler(function(response:Response<GetCurrentVersionResult>)
+			var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addStatusHandler()
 			{
 				if (response.result != null)
 				{
@@ -81,7 +80,7 @@ class NGio
 			/* They are NOT playing on newgrounds.com, no session id was found. We must start one manually, if we want to.
 			 * Note: This will cause a new browser window to pop up where they can log in to newgrounds
 			 */
-			NG.core.requestLogin(onNGLogin);
+			// NG.core.requestLogin(onNGLogin);
 		}
 	}
 
@@ -92,12 +91,12 @@ class NGio
 		FlxG.save.data.sessionId = NG.core.sessionId;
 		// FlxG.save.flush();
 		// Load medals then call onNGMedalFetch()
-		NG.core.requestMedals(onNGMedalFetch);
+		// NG.core.requestMedals(onNGMedalFetch);
 
 		// Load Scoreboards hten call onNGBoardsFetch()
-		NG.core.requestScoreBoards(onNGBoardsFetch);
+		// NG.core.requestScoreBoards(onNGBoardsFetch);
 
-		ngDataLoaded.dispatch();
+		// ngDataLoaded.dispatch();
 	}
 
 	// --- MEDALS
