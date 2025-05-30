@@ -41,16 +41,14 @@ class NGio
 		new FlxTimer().start(2, function(tmr:FlxTimer)
 		{
 			var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addStatusHandler();
+                        if (response.result != null)
 			{
-				if (response.result != null)
-				{
-					GAME_VER = response.result.data.currentVersion;
-					GAME_VER_NUMS = GAME_VER.split(" ")[0].trim();
-					trace('CURRENT NG VERSION: ' + GAME_VER);
-					trace('CURRENT NG VERSION: ' + GAME_VER_NUMS);
-					gotOnlineVer = true;
-				}
-		});
+				GAME_VER = response.result.data.currentVersion;
+				GAME_VER_NUMS = GAME_VER.split(" ")[0].trim();
+				trace('CURRENT NG VERSION: ' + GAME_VER);
+				trace('CURRENT NG VERSION: ' + GAME_VER_NUMS);
+				gotOnlineVer = true;
+			}
 			call.send();
 		});
 	}
