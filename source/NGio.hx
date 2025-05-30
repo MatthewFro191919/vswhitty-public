@@ -10,7 +10,6 @@ import io.newgrounds.objects.Score;
 import io.newgrounds.objects.ScoreBoard;
 import io.newgrounds.objects.events.Response;
 import io.newgrounds.objects.events.Result.GetCurrentVersionResult;
-import io.newgrounds.objects.events.Result.GetVersionResult;
 import lime.app.Application;
 import openfl.display.Stage;
 
@@ -38,24 +37,23 @@ class NGio
 		trace('INIT NOLOGIN');
 		GAME_VER = "v" + Application.current.meta.get('version');
 
-		if (api.length != 0)
-		{
-			NG.create(api);
+		NG.create(api);
 
-			new FlxTimer().start(2, function(tmr:FlxTimer)
+		new FlxTimer().start(2, function(tmr:FlxTimer)
+		{
+			var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addStatusHandler(function(response:Response<GetCurrentVersionResult>)
 			{
-				var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addDataHandler(function(response:Response<GetCurrentVersionResult>)
+				if (response.result != null)
 				{
 					GAME_VER = response.result.data.currentVersion;
 					GAME_VER_NUMS = GAME_VER.split(" ")[0].trim();
 					trace('CURRENT NG VERSION: ' + GAME_VER);
 					trace('CURRENT NG VERSION: ' + GAME_VER_NUMS);
 					gotOnlineVer = true;
-				});
-
-				call.send();
-			});
-		}
+				}
+		});
+			call.send();
+		});
 	}
 
 	public function new(api:String, encKey:String, ?sessionId:String)
