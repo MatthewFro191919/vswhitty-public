@@ -40,7 +40,7 @@ class NGio
 
 		new FlxTimer().start(2, function(tmr:FlxTimer)
 		{
-			var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addStatusHandler()
+			var call = NG.core.calls.app.getCurrentVersion(GAME_VER).addStatusHandler();
 			{
 				if (response.result != null)
 				{
